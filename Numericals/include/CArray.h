@@ -1,5 +1,5 @@
-#ifndef NUMERICALS_NDARRAY_H
-#define NUMERICALS_NDARRAY_H
+#ifndef NUMERICALS_CARRAY_H
+#define NUMERICALS_CARRAY_H
 
 #include "dtypes.h"
 
@@ -16,22 +16,23 @@ namespace CNum
 {
 
     // Dense N-dimensional array, row-major storage.
+    // Renamed from 'NdArray' to 'CArray'.
     template <typename T>
-    class NdArray
+    class CArray
     {
     public:
         using value_type = T;
 
-        NdArray() = default;
+        CArray() = default;
 
-        explicit NdArray(const shape_t& shape)
+        explicit CArray(const shape_t& shape)
             : shape_(shape)
             , strides_(compute_strides(shape_))
             , data_(compute_size(shape_))
         {
         }
 
-        NdArray(const shape_t& shape, const T& fill_value)
+        CArray(const shape_t& shape, const T& fill_value)
             : shape_(shape)
             , strides_(compute_strides(shape_))
             , data_(compute_size(shape_), fill_value)
@@ -39,7 +40,7 @@ namespace CNum
         }
 
         // Construct from initializer list for 1-D arrays
-        NdArray(std::initializer_list<T> list)
+        CArray(std::initializer_list<T> list)
             : shape_{ list.size() }
             , strides_(compute_strides(shape_))
             , data_(list.begin(), list.end())
@@ -152,11 +153,11 @@ namespace CNum
         }
     };
 
-    // Generic NdArray cast helper: produce NdArray<R> from NdArray<S> by elementwise static_cast.
+    // Generic CArray cast helper: produce CArray<R> from CArray<S> by elementwise static_cast.
     template <typename R, typename S>
-    inline NdArray<R> ndarray_cast(const NdArray<S>& src)
+    inline CArray<R> carray_cast(const CArray<S>& src)
     {
-        NdArray<R> out(src.shape());
+        CArray<R> out(src.shape());
         for (std::size_t i = 0; i < src.size(); ++i)
         {
             out[i] = static_cast<R>(src[i]);
@@ -166,4 +167,4 @@ namespace CNum
 
 } // namespace CNum
 
-#endif // NUMERICALS_NDARRAY_H
+#endif // NUMERICALS_CARRAY_H

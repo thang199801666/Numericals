@@ -75,6 +75,30 @@ namespace CNum
         return B;
     }
 
+    // Implement Matrix * Vector and Matrix * Matrix operator overloads here
+    // so matmul definitions are visible at the point of instantiation.
+    template <typename T, typename U>
+    Vector<typename std::common_type<T, U>::type> operator*(const Matrix<T>& A, const Vector<U>& x)
+    {
+        using R = typename std::common_type<T, U>::type;
+        auto nA = carray_cast<R>(A.to_carray());
+        auto nx = carray_cast<R>(x.to_carray());
+        Matrix<R> mA(std::move(nA));
+        Vector<R> vx(std::move(nx));
+        return matmul(mA, vx);
+    }
+
+    template <typename T, typename U>
+    Matrix<typename std::common_type<T, U>::type> operator*(const Matrix<T>& A, const Matrix<U>& B)
+    {
+        using R = typename std::common_type<T, U>::type;
+        auto nA = carray_cast<R>(A.to_carray());
+        auto nB = carray_cast<R>(B.to_carray());
+        Matrix<R> mA(std::move(nA));
+        Matrix<R> mB(std::move(nB));
+        return matmul(mA, mB);
+    }
+
 } // namespace CNum
 
 #endif // NUMERICALS_LINALG_H

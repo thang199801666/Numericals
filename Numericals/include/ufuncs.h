@@ -1,8 +1,7 @@
-
 #ifndef NUMERICALS_UFUNCS_H
 #define NUMERICALS_UFUNCS_H
 
-#include "ndarray.h"
+#include "CArray.h" 
 
 #include <algorithm>
 #include <functional>
@@ -147,10 +146,10 @@ namespace CNum
 
     // Generic elementwise binary op with broadcasting (with bounds checks and diagnostics)
     template <typename T, typename BinaryOp>
-    NdArray<T> elementwise_binary_op(const NdArray<T>& a, const NdArray<T>& b, BinaryOp op)
+    CArray<T> elementwise_binary_op(const CArray<T>& a, const CArray<T>& b, BinaryOp op)
     {
         shape_t out_shape = broadcast_shape(a.shape(), b.shape());
-        NdArray<T> out(out_shape);
+        CArray<T> out(out_shape);
 
         std::size_t total = out.size();
         shape_t indices;
@@ -181,66 +180,66 @@ namespace CNum
 
     // Convenience ufuncs (arithmetic)
     template <typename T>
-    NdArray<T> add(const NdArray<T>& a, const NdArray<T>& b)
+    CArray<T> add(const CArray<T>& a, const CArray<T>& b)
     {
         return elementwise_binary_op(a, b, std::plus<T>{});
     }
 
     template <typename T>
-    NdArray<T> sub(const NdArray<T>& a, const NdArray<T>& b)
+    CArray<T> sub(const CArray<T>& a, const CArray<T>& b)
     {
         return elementwise_binary_op(a, b, std::minus<T>{});
     }
 
     template <typename T>
-    NdArray<T> mul(const NdArray<T>& a, const NdArray<T>& b)
+    CArray<T> mul(const CArray<T>& a, const CArray<T>& b)
     {
         return elementwise_binary_op(a, b, std::multiplies<T>{});
     }
 
     template <typename T>
-    NdArray<T> div(const NdArray<T>& a, const NdArray<T>& b)
+    CArray<T> div(const CArray<T>& a, const CArray<T>& b)
     {
         return elementwise_binary_op(a, b, std::divides<T>{});
     }
 
     // Bitwise (elementwise) — mixed-type support by casting to common_type
     template <typename A, typename B>
-    inline NdArray<typename std::common_type<A, B>::type> bit_and(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<typename std::common_type<A, B>::type> bit_and(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         return elementwise_binary_op<R>(na, nb, std::bit_and<R>{});
     }
 
     template <typename A, typename B>
-    inline NdArray<typename std::common_type<A, B>::type> bit_or(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<typename std::common_type<A, B>::type> bit_or(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         return elementwise_binary_op<R>(na, nb, std::bit_or<R>{});
     }
 
     template <typename A, typename B>
-    inline NdArray<typename std::common_type<A, B>::type> bit_xor(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<typename std::common_type<A, B>::type> bit_xor(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         return elementwise_binary_op<R>(na, nb, std::bit_xor<R>{});
     }
 
-    // Comparison ops (elementwise) produce NdArray<bool>
+    // Comparison ops (elementwise) produce CArray<bool>
     template <typename A, typename B>
-    inline NdArray<bool> eq(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<bool> eq(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         shape_t out_shape = broadcast_shape(na.shape(), nb.shape());
-        NdArray<bool> out(out_shape);
+        CArray<bool> out(out_shape);
         std::size_t total = out.size();
         shape_t indices;
         for (std::size_t linear = 0; linear < total; ++linear)
@@ -254,13 +253,13 @@ namespace CNum
     }
 
     template <typename A, typename B>
-    inline NdArray<bool> neq(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<bool> neq(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         shape_t out_shape = broadcast_shape(na.shape(), nb.shape());
-        NdArray<bool> out(out_shape);
+        CArray<bool> out(out_shape);
         std::size_t total = out.size();
         shape_t indices;
         for (std::size_t linear = 0; linear < total; ++linear)
@@ -274,13 +273,13 @@ namespace CNum
     }
 
     template <typename A, typename B>
-    inline NdArray<bool> lt(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<bool> lt(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         shape_t out_shape = broadcast_shape(na.shape(), nb.shape());
-        NdArray<bool> out(out_shape);
+        CArray<bool> out(out_shape);
         std::size_t total = out.size();
         shape_t indices;
         for (std::size_t linear = 0; linear < total; ++linear)
@@ -294,13 +293,13 @@ namespace CNum
     }
 
     template <typename A, typename B>
-    inline NdArray<bool> le(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<bool> le(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         shape_t out_shape = broadcast_shape(na.shape(), nb.shape());
-        NdArray<bool> out(out_shape);
+        CArray<bool> out(out_shape);
         std::size_t total = out.size();
         shape_t indices;
         for (std::size_t linear = 0; linear < total; ++linear)
@@ -314,13 +313,13 @@ namespace CNum
     }
 
     template <typename A, typename B>
-    inline NdArray<bool> gt(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<bool> gt(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         shape_t out_shape = broadcast_shape(na.shape(), nb.shape());
-        NdArray<bool> out(out_shape);
+        CArray<bool> out(out_shape);
         std::size_t total = out.size();
         shape_t indices;
         for (std::size_t linear = 0; linear < total; ++linear)
@@ -334,13 +333,13 @@ namespace CNum
     }
 
     template <typename A, typename B>
-    inline NdArray<bool> ge(const NdArray<A>& a, const NdArray<B>& b)
+    inline CArray<bool> ge(const CArray<A>& a, const CArray<B>& b)
     {
         using R = typename std::common_type<A, B>::type;
-        auto na = ndarray_cast<R>(a);
-        auto nb = ndarray_cast<R>(b);
+        auto na = carray_cast<R>(a);
+        auto nb = carray_cast<R>(b);
         shape_t out_shape = broadcast_shape(na.shape(), nb.shape());
-        NdArray<bool> out(out_shape);
+        CArray<bool> out(out_shape);
         std::size_t total = out.size();
         shape_t indices;
         for (std::size_t linear = 0; linear < total; ++linear)

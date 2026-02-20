@@ -15,39 +15,52 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="matrix_exports.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Numericals\dtypes.h">
+    <ClInclude Include="include\CArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Numericals\ndarray.h">
+    <ClInclude Include="include\dtypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Numericals\ufuncs.h">
+    <ClInclude Include="include\export.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="matrix.h">
+    <ClInclude Include="include\linalg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Numericals\views.h">
+    <ClInclude Include="include\matrix.h">
       <Filter>Header Files</Filter>
-    </Text>
-    <Text Include="Numericals\reduction.h">
+    </ClInclude>
+    <ClInclude Include="include\reduction.h">
       <Filter>Header Files</Filter>
-    </Text>
-    <Text Include="Numericals\matrix.h">
+    </ClInclude>
+    <ClInclude Include="include\ufuncs.h">
       <Filter>Header Files</Filter>
-    </Text>
-    <Text Include="Numericals\vector.h">
+    </ClInclude>
+    <ClInclude Include="include\vector.h">
       <Filter>Header Files</Filter>
-    </Text>
-    <Text Include="Numericals\linalg.h">
+    </ClInclude>
+    <ClInclude Include="include\views.h">
       <Filter>Header Files</Filter>
-    </Text>
+    </ClInclude>
+    <ClInclude Include="include\Sorting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Searching.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Interpolation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LinearEquations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NonlinearEquations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

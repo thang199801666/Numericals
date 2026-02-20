@@ -2,7 +2,7 @@
 #define NUMERICALS_VIEWS_H
 
 #include "dtypes.h"
-#include "ndarray.h"
+#include "Carray.h"
 
 #include <cstddef>
 #include <stdexcept>

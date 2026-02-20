@@ -2,7 +2,7 @@
 #define NUMERICALS_REDUCTIONS_H
 
 #include "dtypes.h"
-#include "ndarray.h"
+#include "CArray.h"
 #include "views.h"
 
 #include <numeric>
