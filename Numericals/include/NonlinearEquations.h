@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace Numericals
+namespace CNum
 {
     /**
      * @brief Result returned by iterative root-finding methods.

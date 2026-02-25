@@ -2,7 +2,7 @@
 #ifndef NUMERICALS_SEARCHING_H
 #define NUMERICALS_SEARCHING_H
 
-#include "vector.h"
+#include "Vector.h"
 #include <algorithm>
 #include <functional>
 #include <type_traits>

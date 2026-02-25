@@ -132,11 +132,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="TestFEM2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Numericals\Numericals.vcxproj">
       <Project>{4af88dd1-630b-4c14-96db-cd9f280735a7}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestFEM2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

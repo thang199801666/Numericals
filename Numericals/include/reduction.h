@@ -8,7 +8,7 @@
 #include <numeric>
 #include <type_traits>
 
-namespace numericals
+namespace CNum
 {
 
     // Sum reduction over any type that supports size() and operator[]

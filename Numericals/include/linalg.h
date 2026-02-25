@@ -1,8 +1,8 @@
 #ifndef NUMERICALS_LINALG_H
 #define NUMERICALS_LINALG_H
 
-#include "vector.h"
-#include "matrix.h"
+#include "Vector.h"
+#include "Matrix.h"
 #include <type_traits>
 
 namespace CNum

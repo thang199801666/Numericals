@@ -1,7 +1,7 @@
 #ifndef NUMERICALS_SORTING_H
 #define NUMERICALS_SORTING_H
 
-#include "vector.h"
+#include "Vector.h"
 #include <algorithm>
 #include <functional>
 #include <numeric>

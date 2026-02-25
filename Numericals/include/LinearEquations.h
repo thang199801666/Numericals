@@ -3,8 +3,8 @@
 #ifndef NUMERICALS_LINEAREQUATIONS_H
 #define NUMERICALS_LINEAREQUATIONS_H
 
-#include "matrix.h"
-#include "vector.h"
+#include "Matrix.h"
+#include "Vector.h"
 #include <vector>
 #include <tuple>
 #include <utility>

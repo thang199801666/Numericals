@@ -3,7 +3,7 @@
 #ifndef NUMERICALS_INTERPOLATION_H
 #define NUMERICALS_INTERPOLATION_H
 
-#include "vector.h"
+#include "Vector.h"
 #include "CArray.h"
 #include <algorithm>
 #include <vector>

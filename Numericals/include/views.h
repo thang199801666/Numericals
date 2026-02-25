@@ -8,7 +8,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace numericals
+namespace CNum
 {
 
     // Small helper: convert linear index to multidim indices (row-major)

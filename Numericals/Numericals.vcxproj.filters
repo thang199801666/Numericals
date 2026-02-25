@@ -18,6 +18,9 @@
     <ClCompile Include="matrix_exports.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Quadrature.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CArray.h">
@@ -32,7 +35,7 @@
     <ClInclude Include="include\linalg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\matrix.h">
+    <ClInclude Include="include\Matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\reduction.h">
@@ -41,7 +44,7 @@
     <ClInclude Include="include\ufuncs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\vector.h">
+    <ClInclude Include="include\Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\views.h">
@@ -60,6 +63,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\NonlinearEquations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Quadrature.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SparseMatrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IterativeSolvers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

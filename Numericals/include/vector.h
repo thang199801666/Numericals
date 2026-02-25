@@ -120,7 +120,7 @@ namespace CNum
             return sum;
         }
 
-        // cross product (member) — only for 3D vectors
+        // cross product (member) - only for 3D vectors
         template <typename U>
         Vector<typename std::common_type<T, U>::type> cross(const Vector<U>& other) const
         {
@@ -134,8 +134,10 @@ namespace CNum
             return r;
         }
 
-        // sum of elements
-        auto sum() const -> typename std::common_type<T>::type
+        // sum of elements (only available for arithmetic T)
+        template <typename U = T>
+        auto sum() const -> typename std::enable_if<std::is_arithmetic<U>::value,
+            typename std::common_type<U>::type>::type
         {
             using R = typename std::common_type<T>::type;
             R s = R();
@@ -143,8 +145,10 @@ namespace CNum
             return s;
         }
 
-        // Euclidean norm (returns floating type)
-        auto norm() const -> typename std::common_type<T, long double>::type
+        // Euclidean norm (only available for arithmetic T)
+        template <typename U = T>
+        auto norm() const -> typename std::enable_if<std::is_arithmetic<U>::value,
+            typename std::common_type<U, long double>::type>::type
         {
             using R = typename std::common_type<T, long double>::type;
             R s = R();

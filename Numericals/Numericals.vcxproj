@@ -128,21 +128,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="matrix_exports.cpp" />
+    <ClCompile Include="src\Quadrature.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CArray.h" />
     <ClInclude Include="include\dtypes.h" />
     <ClInclude Include="include\export.h" />
+    <ClInclude Include="include\IterativeSolvers.h" />
+    <ClInclude Include="include\Quadrature.h" />
     <ClInclude Include="include\Interpolation.h" />
     <ClInclude Include="include\linalg.h" />
     <ClInclude Include="include\LinearEquations.h" />
-    <ClInclude Include="include\matrix.h" />
+    <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\NonlinearEquations.h" />
     <ClInclude Include="include\reduction.h" />
     <ClInclude Include="include\Searching.h" />
     <ClInclude Include="include\Sorting.h" />
+    <ClInclude Include="include\SparseMatrix.h" />
     <ClInclude Include="include\ufuncs.h" />
-    <ClInclude Include="include\vector.h" />
+    <ClInclude Include="include\Vector.h" />
     <ClInclude Include="include\views.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
